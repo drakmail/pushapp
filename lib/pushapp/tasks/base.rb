@@ -24,7 +24,7 @@ module Pushapp
       end
 
       def sudo
-        options[:sudo] || 'sudo -i'
+        options[:sudo] || 'sudo'
       end
 
       def system cmd
