@@ -5,7 +5,7 @@ module Pushapp
     class ForemanExport < Base
 
       def run
-        system "#{sudo} -i bundle exec foreman export #{arguments}"
+        system "#{sudo} bundle exec foreman export #{arguments}"
       end
 
       private
