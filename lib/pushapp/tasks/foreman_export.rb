@@ -5,7 +5,8 @@ module Pushapp
     class ForemanExport < Base
 
       def run
-        system "#{sudo} -i cd `pwd` && bundle exec foreman export #{arguments}"
+        system "bundle exec foreman export #{arguments}"
+        system "sudo cat ~/init.foreman >> /etc/inittab"
       end
 
       private
@@ -25,11 +26,11 @@ module Pushapp
       end
 
       def foreman_format
-        options[:foreman_format] || "upstart"
+        options[:foreman_format] || "inittab"
       end
 
       def foreman_location
-        options[:foreman_location] || foreman_format == 'upstart' ? '/etc/init' : nil
+        options[:foreman_location] || foreman_format == 'upstart' ? '/etc/init' : "~/init.foreman"
       end
 
       def foreman_procfile
