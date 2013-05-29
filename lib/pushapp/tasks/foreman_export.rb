@@ -6,7 +6,7 @@ module Pushapp
 
       def run
         system "bundle exec foreman export #{arguments}"
-        system "sudo cat ~/init.foreman >> /etc/inittab"
+        system "#{sudo} cat ~/init.foreman >> /etc/inittab"
       end
 
       private
